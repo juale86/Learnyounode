@@ -20,15 +20,14 @@
 //		console.log("Err:",err);
 //});
 // Ej 5
-var fs = require("fs");
-var path = require('path');
-fs.readdir(process.argv[2],(err,list)=>{
-	if(!err){
-		list.forEach(elem => {
-			if(path.extname(elem) == '.'+process.argv[3])
-			console.log(elem);
-		});
+var func = require("./Ej7");
+func(process.argv[2], process.argv[3],(err, list)=> {
+	if(err){
+		console.log('Hubo algún error!');
 	} else {
-		console.log("Errooooor");
+		list.forEach(elem =>{
+			console.log(elem);
+		})
 	}
 });
+
