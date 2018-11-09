@@ -1,4 +1,5 @@
 //console.log("HELLO WORLD");
+
 // Ej 2
 //var num = 0;
 //for(i=2;i<process.argv.length;i++){
@@ -19,15 +20,43 @@
 //	} else
 //		console.log("Err:",err);
 //});
-// Ej 5
-var func = require("./Ej7");
-func(process.argv[2], process.argv[3],(err, list)=> {
-	if(err){
-		console.log('Hubo algún error!');
-	} else {
-		list.forEach(elem =>{
-			console.log(elem);
-		})
-	}
+
+// Ej 6
+//var func = require("./Ej6");
+//func(process.argv[2], process.argv[3],(err, list)=> {
+//	if(err){
+//		console.log('Hubo algún error!');
+//	} else {
+//		list.forEach(elem =>{
+//			console.log(elem);
+//		})
+//	}
+//});
+
+// Ej 7
+var http = require('http');
+http.get(process.argv[2],(response) => {
+	response.on('data', (data) => {
+		console.log(data.toString());
+	});
+	response.on('error', (err) => {
+		console.log('Hubo un error')
+	});
+});
+
+// Ej 8
+var http = require("http");
+http.get(process.argv[2],(res) => {
+	var string = [];
+	res.on('data',chunk =>{
+		string.push(chunk.toString());
+	});
+	res.on('end', (data) => {
+		console.log(string.length);
+		console.log(string);
+	});
+	res.on('error', (err) => {
+		console.error(err);
+	});
 });
 
