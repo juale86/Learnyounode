@@ -60,4 +60,46 @@
 //	});
 //});
 
-// Ej 9
+// Ej 9 - Con un poquito de vergüenza
+//var string1 = "";
+//var string2 = "";
+//var string3 = "";
+//var http = require('http');
+//var http2 = require('http');
+//var http3 = require('http');
+//http.get(process.argv[2], res =>{
+//	res.on('data', data =>{
+//		string1 += data.toString();
+//	});
+//	res.on('end', chunk => {
+//		http2.get(process.argv[3], res2 =>{
+//			res2.on('data', data =>{
+//				string2 += data.toString();
+//			});
+//			res2.on('end', data => {
+//				http3.get(process.argv[4], res3 =>{
+//					res3.on('data', data =>{
+//						string3 += data.toString();
+//					});
+//					res3.on('end', data =>{
+//						console.log(string1);
+//						console.log(string2);
+//						console.log(string3);
+//					});
+//				});
+//			});
+//		});
+//	});
+//});
+
+
+// Ej 10
+//var net = require('net');
+//var strftime = require('strftime');
+//strftime.timezone('-0300');
+//var server = net.createServer(socket =>{
+//	socket.end(strftime("%F %R\n"));
+//});
+//server.listen(process.argv[2]);
+
+// Ej 11
