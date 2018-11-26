@@ -103,3 +103,26 @@
 //server.listen(process.argv[2]);
 
 // Ej 11
+//var http = require('http');
+//var fs = require('fs');
+//var server = http.createServer((req,res) => {
+//	var chunk = fs.createReadStream(process.argv[3]);
+//	chunk.pipe(res);
+//});
+//server.listen(process.argv[2])
+
+// Ej 12
+//var http = require('http');
+//var th = require('through2-map');
+//var server = http.createServer((req,res)=>{
+//	if(req.method == 'POST'){
+//		req.pipe(th(chunk =>{
+//			return chunk.toString().toUpperCase();
+//		})).pipe(res);
+//	} else {
+//		res.end('No se acepta el método.');
+//	}
+//});
+//server.listen(process.argv[2]);
+
+// Ej 13
