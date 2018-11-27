@@ -126,3 +126,45 @@
 //server.listen(process.argv[2]);
 
 // Ej 13
+var http = require('http');
+var url = require('url');
+var server = http.createServer((req,res) =>{
+	if(req.method == 'GET'){
+		var params = url.parse(req.url, true);
+		switch(params.pathname){
+			case '/api/parsetime':
+				res.writeHead(200, { 'Content-Type': 'application/json' });
+				var date = new Date(params.query.iso);
+				var time = {
+					'hour':date.getHours(),
+					'minute':date.getUTCMinutes(),
+					'second':date.getUTCSeconds()
+				};
+				res.end(JSON.stringify(time));
+				break;
+			case '/api/unixtime':
+				res.writeHead(200, { 'Content-Type': 'application/json' });
+				var date = new Date().getTime()-100631;
+				res.end(JSON.stringify({unixtime:date}));
+				break;
+			default:
+				res.end('No existe el endpoint');
+		}
+	}
+	res.writeHead(404);
+	res.end('Método no permitido');
+});
+server.listen(process.argv[2]);
+
+/*
+1543333075838
+GMT: Tuesday, 27 November 2018 15:37:55.838
+Your time zone: martes, 27 de noviembre de 2018 12:37:55.838 GMT-03:00
+
+1543333176470
+GMT: Tuesday, 27 November 2018 15:39:36.470
+Your time zone: martes, 27 de noviembre de 2018 12:39:36.470 GMT-03:00
+
+1543333176470 - 1543333075838 = 100632
+
+*/
